@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz cumpleaños Yadira</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-image: url("kwi avocado.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        text-align: center;
+        color: #2e2e2e;
+    }
+
+    .overlay {
+        background-color: rgba(255,255,255,0.85);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    h1 {
+        font-size: 3em;
+        color: #4CAF50;
+    }
+
+    p {
+        font-size: 1.3em;
+        max-width: 800px;
+        margin: 15px auto;
+    }
+
+    .fade {
+        animation: fadeIn 1.5s forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .photo {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+</style>
+</head>
+
+<body>
+<div class="overlay">
+
+    <!-- 1️⃣ TÍTULO -->
+    <div id="step1" class="fade">
+        <h1>🎉 Feliz cumpleaños Yadira 🎉</h1>
+    </div>
+
+    <!-- 2️⃣ MENSAJE -->
+    <div id="step2" class="hidden fade">
+        <p>No solo eres una amiga increíble, sino una mujer que admiro y que me hace sonreír cada vez que apareces en mi pantalla.</p>
+        <p>Y me encantaría que este nuevo año nos traiga momentos todavía más cercanos.</p>
+        <p>Pásalo increíble, te lo mereces todo. 💚</p>
+    </div>
+
+    <!-- 3️⃣ FOTOS -->
+    <div id="step3" class="hidden">
+        <img id="photo" class="photo fade" src="">
+    </div>
+
+    <!-- 4️⃣ FINAL -->
+    <div id="step4" class="hidden fade">
+        <h1>Te quiero 💚</h1>
+    </div>
+
+</div>
+
+<script>
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+    const step3 = document.getElementById("step3");
+    const step4 = document.getElementById("step4");
+    const photo = document.getElementById("photo");
+
+    const photos = [
+        "foto 1.jpg",
+        "foto 2.jpg",
+        "foto 3.jpg",
+        "foto 4.jpg"
+    ];
+
+    let index = 0;
+
+    // Título → Mensaje
+    setTimeout(() => {
+        step1.classList.add("hidden");
+        step2.classList.remove("hidden");
+    }, 3000);
+
+    // Mensaje → Fotos
+    setTimeout(() => {
+        step2.classList.add("hidden");
+        step3.classList.remove("hidden");
+        showNextPhoto();
+    }, 11000);
+
+    function showNextPhoto() {
+        if (index < photos.length) {
+            photo.src = photos[index];
+            index++;
+            setTimeout(showNextPhoto, 3000);
+        } else {
+            step3.classList.add("hidden");
+            step4.classList.remove("hidden");
+        }
+    }
+</script>
+
+</body>
+</html>
